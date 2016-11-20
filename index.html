@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Handling events in AngularJS</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/Scripts.js"></script>
+</head>
+<body ng-app="myModule">
+	<div ng-controller="myController">
+
+	Order By : 	<select ng-model="sortColumn">
+		
+		<option value="name">Name ASC</option>
+		<option value="gender">Gender ASC</option>
+		<option value="dateOfBirth">Date of Birth ASC</option>
+		<option value="-salary">Salary DESC</option>
+
+				</select>
+	<br>
+	<br>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date of Employee</th>
+					<th>Gender</th>
+					<th>Salary(number)</th>
+					<th>Salary(currency)</th>
+				</tr>
+			</thead>
+
+			<tbody>
+						<!--1.To sort in ascending order, set reverse to false
+							2.To sort in descending order, set reverse to true
+							3.You can also use + and - to sort in ascending and descending order respectively Example : ng-repeat="employee in employees | orderBy:'+salary'"-->
+			
+				<tr ng-repeat="employee in employees | orderBy:sortColumn">
+
+				
+
+					<td>{{employee.name | uppercase}}</td>
+					<td>{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+					<td>{{employee.gender | lowercase}} </td>
+					<td>{{employee.salary | number:2}} </td>
+					<td>{{employee.salary | currency:1}} </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
